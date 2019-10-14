@@ -2,24 +2,21 @@
 # Salt Stack Salt Minion Container
 #
 
-FROM ubuntu:18.04
+FROM centos:7
 MAINTAINER Balvinder <bal.rawat@gmail.com>
 
-ARG DEBIAN_FRONTEND=noninteractive
 
 # Update System
-RUN apt-get update
+RUN yum upgrade -y
 
 # Add PPA
 
-RUN apt-get install -y software-properties-common dmidecode wget
-RUN echo "deb http://repo.saltstack.com/py3/ubuntu/18.04/amd64/2019.2 bionic main" >> /etc/apt/sources.list.d/saltstack.list
-RUN wget -O - https://repo.saltstack.com/py3/ubuntu/18.04/amd64/2019.2/SALTSTACK-GPG-KEY.pub | apt-key add -
-RUN apt-get update
+RUN yum install -y dmidecode wget
+RUN yum install https://repo.saltstack.com/py3/redhat/salt-py3-repo-2019.2.el7.noarch.rpm 
 
 # Install Salt
 
-RUN apt-get install -y  salt-minion
+RUN yum install -y  salt-minion
 
 # Add Run File
 
