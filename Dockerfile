@@ -11,8 +11,8 @@ RUN yum upgrade -y
 
 # Add PPA
 
-RUN yum install -y dmidecode wget
-RUN yum install https://repo.saltstack.com/py3/redhat/salt-py3-repo-2019.2.el7.noarch.rpm 
+RUN yum install -y dmidecode wget epel-release
+RUN rpm -ivh https://repo.saltstack.com/py3/redhat/salt-py3-repo-2019.2.el7.noarch.rpm 
 
 # Install Salt
 
